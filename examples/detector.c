@@ -692,7 +692,7 @@ void test_detector_on_txt_file(char *datacfg, char *cfgfile, char *weightfile, c
         //draw_detections(im, dets, nboxes, thresh, names, alphabet, l.classes);
 
         // Save bounding boxes to txt file
-        //save_bounding_boxes(im, dets, nboxes, thresh, filename, out_filename);
+        save_bounding_boxes(im, dets, nboxes, thresh, filename, out_filename);
 
         free_detections(dets, nboxes);
         free_image(im);

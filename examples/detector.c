@@ -135,7 +135,7 @@ void train_detector(char *datacfg, char *cfgfile, char *weightfile, int *gpus, i
             sprintf(buff, "%s/%s.backup", backup_directory, base);
             save_weights(net, buff);
         }
-        if(i%10000==0 || (i < 1000 && i%100 == 0)){
+        if(i%10000==0 || (i < 1000 && i%100 == 0) || (i < 100 && i%10 == 0) || (i == 1)){
 #ifdef GPU
             if(ngpus != 1) sync_nets(nets, ngpus, 0);
 #endif
@@ -691,12 +691,8 @@ void test_detector_on_txt_file(char *datacfg, char *cfgfile, char *weightfile, c
         // Draw bbox
         //draw_detections(im, dets, nboxes, thresh, names, alphabet, l.classes);
 
-        // Crop and save images containing a person
-        // DOESNT WORK YET
-        //crop_people(im, dets, nboxes, thresh, filename);
-
         // Save bounding boxes to txt file
-        save_bounding_boxes(im, dets, nboxes, thresh, filename, out_filename);
+        //save_bounding_boxes(im, dets, nboxes, thresh, filename, out_filename);
 
         free_detections(dets, nboxes);
         free_image(im);
